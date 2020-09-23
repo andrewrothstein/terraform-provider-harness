@@ -3,8 +3,8 @@ module github.com/eahrend/terraform-harness-provider
 go 1.13
 
 require (
-	github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200923184946-e4b4a55f102d // indirect
-	github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200923184946-e4b4a55f102d
+	github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200923185050-712c8a64768c // indirect
+	github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200923185050-712c8a64768c
 	github.com/fatih/color v1.9.0 // indirect
 	github.com/hashicorp/go-hclog v0.14.1 // indirect
 	github.com/hashicorp/terraform v0.13.3
