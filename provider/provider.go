@@ -34,7 +34,7 @@ func Provider() terraform.ResourceProvider {
 
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 	clientURL := d.Get("clientUrl").(string)
-	accountID := d.Get("accountID").(int)
+	accountID := d.Get("accountID").(string)
 	token := d.Get("token").(string)
 	return client.NewClient(clientURL, token, accountID), nil
 }
