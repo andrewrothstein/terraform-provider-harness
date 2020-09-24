@@ -1,8 +1,18 @@
 package provider
 
 import (
+	"bytes"
 	"fmt"
 	"github.com/hashicorp/terraform/helper/schema"
+	"io"
+	k8sMeta "k8s.io/apimachinery/pkg/api/meta"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
+	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/runtime/serializer/yaml"
+	yamlutil "k8s.io/apimachinery/pkg/util/yaml"
+	"k8s.io/client-go/dynamic"
+	"k8s.io/client-go/restmapper"
 	"regexp"
 )
 
@@ -35,6 +45,56 @@ func resourceDelegateItem() *schema.Resource {
 }
 
 func resourceCreateItem(d *schema.ResourceData, m interface{}) error {
+	meta := m.(Meta)
+	delegateName := d.Get("delegateName").(string)
+	installType := d.Get("installType").(string)
+	b, err := meta.harnessClient.GetNewDelegate(delegateName, installType)
+	if err != nil {
+		return err
+	}
+	rc := meta.restConfig
+	dd, err := dynamic.NewForConfig(rc)
+	if err != nil {
+		return err
+	}
+	decoder := yamlutil.NewYAMLOrJSONDecoder(bytes.NewReader([]byte(b)), 1000)
+	for {
+		var rawObj runtime.RawExtension
+		if err = decoder.Decode(&rawObj); err != nil {
+			break
+		}
+		obj, gvk, err := yaml.NewDecodingSerializer(unstructured.UnstructuredJSONScheme).Decode(rawObj.Raw, nil, nil)
+		unstructuredMap, err := runtime.DefaultUnstructuredConverter.ToUnstructured(obj)
+		if err != nil {
+			return err
+		}
+		unstructuredObj := &unstructured.Unstructured{Object: unstructuredMap}
+		gr, err := restmapper.GetAPIGroupResources(meta.kubeClient.Discovery())
+		if err != nil {
+			return err
+		}
+
+		mapper := restmapper.NewDiscoveryRESTMapper(gr)
+		mapping, err := mapper.RESTMapping(gvk.GroupKind(), gvk.Version)
+		if err != nil {
+			return err
+		}
+		var dri dynamic.ResourceInterface
+		if mapping.Scope.Name() == k8sMeta.RESTScopeNameNamespace {
+			if unstructuredObj.GetNamespace() == "" {
+				unstructuredObj.SetNamespace("default")
+			}
+			dri = dd.Resource(mapping.Resource).Namespace(unstructuredObj.GetNamespace())
+		} else {
+			dri = dd.Resource(mapping.Resource)
+		}
+		if _, err := dri.Create(unstructuredObj, metav1.CreateOptions{}); err != nil {
+			return err
+		}
+	}
+	if err != io.EOF {
+		return err
+	}
 	return nil
 }
 
