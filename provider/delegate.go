@@ -98,20 +98,31 @@ func resourceCreateItem(d *schema.ResourceData, m interface{}) error {
 	return nil
 }
 
+// uhhh, not sure.
 func resourceReadItem(d *schema.ResourceData, m interface{}) error {
 	return nil
 }
 
 func resourceUpdateItem(d *schema.ResourceData, m interface{}) error {
-	return nil
+	return resourceCreateItem(d, m)
 }
 
 func resourceDeleteItem(d *schema.ResourceData, m interface{}) error {
-	return nil
+	meta := m.(Meta)
+	kc := meta.kubeClient
+	return kc.CoreV1().Namespaces().Delete("harness-delegate", &metav1.DeleteOptions{})
 }
 
 func resourceExistsItem(d *schema.ResourceData, m interface{}) (bool, error) {
-	return false, nil
+	// pretty much we can check for namespace/stateful set here.
+	meta := m.(Meta)
+	kc := meta.kubeClient
+	_, err := kc.CoreV1().Namespaces().Get("harness-delegate", metav1.GetOptions{})
+	if err != nil {
+		// I know this can create false promises, I'll fix this later
+		return false, nil
+	}
+	return true, nil
 }
 
 func validateName(v interface{}, k string) (ws []string, es []error) {
