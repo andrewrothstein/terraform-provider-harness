@@ -1,3 +1,3 @@
 module github.com/eahrend/terraform-harness-provider/api/client
 
-go 1.13
+go 1.14
