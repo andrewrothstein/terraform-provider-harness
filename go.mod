@@ -6,7 +6,6 @@ require (
 	github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200924221147-8781e686c52e // indirect
 	github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200924221147-8781e686c52e
 	github.com/fatih/color v1.9.0 // indirect
-	github.com/go-logr/logr v0.2.1 // indirect
 	github.com/gogo/protobuf v1.3.1 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
 	github.com/googleapis/gnostic v0.5.1 // indirect
@@ -27,9 +26,9 @@ require (
 	google.golang.org/genproto v0.0.0-20200925023002-c2d885f95484 // indirect
 	google.golang.org/grpc v1.32.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
-	k8s.io/api v0.19.2
-	k8s.io/apimachinery v0.19.2
-	k8s.io/client-go v11.0.1-0.20190409021438-1a26190bd76a+incompatible
+	k8s.io/api v0.19.2 // indirect
+	k8s.io/apimachinery v0.19.2 // indirect
+	k8s.io/client-go v11.0.1-0.20190409021438-1a26190bd76a+incompatible // indirect
 	k8s.io/klog v1.0.0 // indirect
 	k8s.io/utils v0.0.0-20200912215256-4140de9c8800 // indirect
 	sigs.k8s.io/yaml v1.2.0 // indirect
