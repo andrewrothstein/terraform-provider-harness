@@ -2,7 +2,6 @@ package provider
 
 import (
 	"bytes"
-	"context"
 	"fmt"
 	"github.com/hashicorp/terraform/helper/schema"
 	"io"
@@ -19,14 +18,14 @@ import (
 func resourceDelegateItem() *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
-			"delegateName": {
+			"delegate_name": {
 				Type:         schema.TypeString,
 				Required:     true,
 				Description:  "The name of the resource, also acts as it's unique ID",
 				ForceNew:     true,
 				ValidateFunc: validateName,
 			},
-			"delegateInstall": {
+			"delegate_install": {
 				Type:         schema.TypeString,
 				Required:     true,
 				Description:  "A description of an item",
@@ -46,8 +45,8 @@ func resourceDelegateItem() *schema.Resource {
 
 func resourceCreateItem(d *schema.ResourceData, m interface{}) error {
 	meta := m.(Meta)
-	delegateName := d.Get("delegateName").(string)
-	installType := d.Get("installType").(string)
+	delegateName := d.Get("delegate_name").(string)
+	installType := d.Get("install_type").(string)
 	b, err := meta.harnessClient.GetNewDelegate(delegateName, installType)
 	if err != nil {
 		return err
@@ -110,14 +109,14 @@ func resourceUpdateItem(d *schema.ResourceData, m interface{}) error {
 func resourceDeleteItem(d *schema.ResourceData, m interface{}) error {
 	meta := m.(Meta)
 	kc := meta.kubeClient
-	return kc.CoreV1().Namespaces().Delete(context.Background(), "harness-delegate", &metav1.DeleteOptions{})
+	return kc.CoreV1().Namespaces().Delete("harness-delegate", &metav1.DeleteOptions{})
 }
 
 func resourceExistsItem(d *schema.ResourceData, m interface{}) (bool, error) {
 	// pretty much we can check for namespace/stateful set here.
 	meta := m.(Meta)
 	kc := meta.kubeClient
-	_, err := kc.CoreV1().Namespaces().Get(context.Background(), "harness-delegate", metav1.GetOptions{})
+	_, err := kc.CoreV1().Namespaces().Get("harness-delegate", metav1.GetOptions{})
 	if err != nil {
 		// I know this can create false promises, I'll fix this later
 		return false, nil

@@ -54,8 +54,8 @@ func Provider() terraform.ResourceProvider {
 
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 	m := &Meta{data: d}
-	clientURL := d.Get("clientUrl").(string)
-	accountID := d.Get("accountID").(string)
+	clientURL := d.Get("client_url").(string)
+	accountID := d.Get("account_id").(string)
 	token := d.Get("token").(string)
 	kClient, restConfig := newKubeClient(d)
 	if kClient == nil || restConfig == nil {
