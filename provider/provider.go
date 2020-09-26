@@ -7,6 +7,7 @@ import (
 	"github.com/hashicorp/terraform/terraform"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
+	"log"
 	"sync"
 )
 
@@ -55,10 +56,14 @@ func Provider() terraform.ResourceProvider {
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 	m := &Meta{data: d}
 	clientURL := d.Get("client_url").(string)
+	log.Printf("Client URL: %s", clientURL)
 	accountID := d.Get("account_id").(string)
+	log.Printf("Account ID: %s", accountID)
 	token := d.Get("token").(string)
+	log.Printf("token: %s", token)
 	kClient, restConfig, err := newKubeClient(d)
 	if err != nil {
+		log.Printf("provider configure error %v", err)
 		return nil, err
 	}
 	m.kubeClient = kClient
@@ -67,5 +72,6 @@ func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 	if m.harnessClient == nil {
 		return m, fmt.Errorf("harness client nil")
 	}
+	log.Println("[INFO] Harness Provider Configured successfully!")
 	return m, nil
 }
