@@ -22,12 +22,12 @@ type Meta struct {
 func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
 		Schema: map[string]*schema.Schema{
-			"clientUrl": {
+			"client_url": {
 				Type:        schema.TypeString,
 				Required:    true,
 				DefaultFunc: schema.EnvDefaultFunc("HARNESS_CLIENT_URL", "https://app.harness.io"),
 			},
-			"accountID": {
+			"account_id": {
 				Type:        schema.TypeString,
 				Required:    true,
 				DefaultFunc: schema.EnvDefaultFunc("HARNESS_ACCOUNT_ID", ""),
