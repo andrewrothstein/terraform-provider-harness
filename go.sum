@@ -120,12 +120,16 @@ github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926165847-4
 github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926165847-49568d50c136/go.mod h1:RIplx+rttqdOta93zaAj4/Wxtc5zvBDh1nSip3xpZhg=
 github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926173707-7d003a69d616 h1:vAIGfEk7JzGpRsdmh4HGZrQuLoJmj7vC2xsXegsFJIE=
 github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926173707-7d003a69d616/go.mod h1:RIplx+rttqdOta93zaAj4/Wxtc5zvBDh1nSip3xpZhg=
+github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926180951-7513a06e8dd1 h1:7G8bLQQqUk8Hkcm1loYRipaOSpNYIB5cPBtuOySEIag=
+github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926180951-7513a06e8dd1/go.mod h1:RIplx+rttqdOta93zaAj4/Wxtc5zvBDh1nSip3xpZhg=
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200925214200-b3b00dccb51a h1:X2o3FhZoU5F/27GvilQKZ8HewnDbuwSf1OXeA0ClhKc=
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200925214200-b3b00dccb51a/go.mod h1:IeNr80UhPTAk3IkOkXuuLVFnw6ZF27V3ZDkoK0d95c8=
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200926172429-803de537bd96 h1:XeJ2W5wwhTpnuat7ghx41wQhhYNWMnZ5Ar98WXlYFB4=
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200926172429-803de537bd96/go.mod h1:wij24n1xHXasp0tTzJO60138syGdTjnjElmyFszKYpU=
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200926173707-7d003a69d616 h1:fmXyLlvxOi+Kf5aeAdv7ImWtkxHbP2t5qq0ruTHLL/M=
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200926173707-7d003a69d616/go.mod h1:wij24n1xHXasp0tTzJO60138syGdTjnjElmyFszKYpU=
+github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200926180951-7513a06e8dd1 h1:R+E8nsQZA4n7/kUvYegMmXXLfWgg1OTjRTW4Vxbs+48=
+github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200926180951-7513a06e8dd1/go.mod h1:wij24n1xHXasp0tTzJO60138syGdTjnjElmyFszKYpU=
 github.com/envoyproxy/go-control-plane v0.9.0/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
 github.com/envoyproxy/go-control-plane v0.9.1-0.20191026205805-5f8ba28d4473/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
 github.com/envoyproxy/go-control-plane v0.9.4/go.mod h1:6rpuAdCZL397s3pYoYcLgu1mIlRU8Am5FuJP05cCM98=
