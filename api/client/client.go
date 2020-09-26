@@ -139,7 +139,7 @@ func (c *HarnessClient) GetNewDelegate(delegateName, installType string) ([]byte
 		return nil, err
 	}
 	downloadQuery := downloadRequest.URL.Query()
-	downloadQuery.Add("delegateName", delegateName)
+	downloadQuery.Add("delegate_name", delegateName)
 	downloadRequest.URL.RawQuery = downloadQuery.Encode()
 	downloadResp, err := c.client.Do(downloadRequest)
 	if err != nil {
