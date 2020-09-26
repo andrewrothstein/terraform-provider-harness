@@ -57,9 +57,9 @@ func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 	clientURL := d.Get("client_url").(string)
 	accountID := d.Get("account_id").(string)
 	token := d.Get("token").(string)
-	kClient, restConfig := newKubeClient(d)
-	if kClient == nil || restConfig == nil {
-		return m, fmt.Errorf("k8s clients nil")
+	kClient, restConfig, err := newKubeClient(d)
+	if err != nil {
+		return nil, err
 	}
 	m.kubeClient = kClient
 	m.restConfig = restConfig

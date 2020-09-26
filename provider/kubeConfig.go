@@ -13,7 +13,7 @@ import (
 
 var k8sPrefix = "kubernetes.0."
 
-func newKubeClient(configData *schema.ResourceData) (*kubernetes.Clientset, *rest.Config) {
+func newKubeClient(configData *schema.ResourceData) (*kubernetes.Clientset, *rest.Config, error) {
 	overrides := &clientcmd.ConfigOverrides{}
 	loader := &clientcmd.ClientConfigLoadingRules{}
 	clusterCaCertificate := configData.Get(fmt.Sprintf("%scluster_ca_certificate", k8sPrefix)).(string)
@@ -22,18 +22,23 @@ func newKubeClient(configData *schema.ResourceData) (*kubernetes.Clientset, *res
 	// hard coding TLS true cause our server only has a true
 	host, _, err := rest.DefaultServerURL(hostString, "", apimachineryschema.GroupVersion{}, true)
 	if err != nil {
-		return nil, nil
+		return nil, nil, err
 	}
 	overrides.ClusterInfo.Server = host.String()
 	overrides.AuthInfo.Token = configData.Get(fmt.Sprintf("%stoken", k8sPrefix)).(string)
 	client := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(loader, overrides)
 	if client == nil {
-		log.Printf("[ERROR] Failed to initialize kubernetes config")
-		return nil, nil
+		return nil, nil, fmt.Errorf("failed to initialize kubernetes config")
 	}
 	log.Printf("[INFO] Successfully initialized kubernetes config")
-	c, _ := client.ClientConfig()
-	k, _ := kubernetes.NewForConfig(c)
-	return k, c
+	c, err := client.ClientConfig()
+	if err != nil {
+		return nil, nil, err
+	}
+	k, err := kubernetes.NewForConfig(c)
+	if err != nil {
+		return nil, nil, err
+	}
+	return k, c, nil
 
 }

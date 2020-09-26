@@ -118,6 +118,8 @@ github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926164640-5
 github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926164640-53445e09181e/go.mod h1:RIplx+rttqdOta93zaAj4/Wxtc5zvBDh1nSip3xpZhg=
 github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926165847-49568d50c136 h1:OY8WN9i59MBJBdgQ55gbnUlnHoV+Ti7vxie76i0nMSA=
 github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926165847-49568d50c136/go.mod h1:RIplx+rttqdOta93zaAj4/Wxtc5zvBDh1nSip3xpZhg=
+github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926173707-7d003a69d616 h1:vAIGfEk7JzGpRsdmh4HGZrQuLoJmj7vC2xsXegsFJIE=
+github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926173707-7d003a69d616/go.mod h1:RIplx+rttqdOta93zaAj4/Wxtc5zvBDh1nSip3xpZhg=
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200925214200-b3b00dccb51a h1:X2o3FhZoU5F/27GvilQKZ8HewnDbuwSf1OXeA0ClhKc=
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200925214200-b3b00dccb51a/go.mod h1:IeNr80UhPTAk3IkOkXuuLVFnw6ZF27V3ZDkoK0d95c8=
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200926172429-803de537bd96 h1:XeJ2W5wwhTpnuat7ghx41wQhhYNWMnZ5Ar98WXlYFB4=
