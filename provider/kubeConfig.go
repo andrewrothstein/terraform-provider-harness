@@ -26,6 +26,7 @@ func newKubeClient(configData *schema.ResourceData) (*kubernetes.Clientset, *res
 	}
 	overrides.ClusterInfo.Server = host.String()
 	overrides.AuthInfo.Token = configData.Get(fmt.Sprintf("%stoken", k8sPrefix)).(string)
+	fmt.Println(overrides)
 	client := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(loader, overrides)
 	if client == nil {
 		return nil, nil, fmt.Errorf("failed to initialize kubernetes config")
