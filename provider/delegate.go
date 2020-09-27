@@ -13,6 +13,7 @@ import (
 	yamlutil "k8s.io/apimachinery/pkg/util/yaml"
 	"k8s.io/client-go/dynamic"
 	"k8s.io/client-go/restmapper"
+	"log"
 )
 
 func resourceDelegateItem() *schema.Resource {
@@ -44,18 +45,29 @@ func resourceDelegateItem() *schema.Resource {
 }
 
 func resourceCreateItem(d *schema.ResourceData, m interface{}) error {
+	log.Printf("[DEBUG] starting resourceCreateItem")
 	meta := m.(Meta)
+	log.Printf("[DEBUG] getting delegate name")
 	delegateName := d.Get("delegate_name").(string)
+	log.Printf("[DEBUG] delegate_name: %s", delegateName)
+	log.Printf("[DEBUG] getting install type")
 	installType := d.Get("install_type").(string)
+	log.Printf("[DEBUG] install type: %s", installType)
 	b, err := meta.harnessClient.GetNewDelegate(delegateName, installType)
 	if err != nil {
+		log.Printf("[ERROR] error getting new delegate: %s", err.Error())
 		return err
 	}
+	log.Printf("[DEBUG] getting rest config from meta")
 	rc := meta.restConfig
+	log.Printf("[DEBUG] getting new dynamic config")
 	dd, err := dynamic.NewForConfig(rc)
 	if err != nil {
+		log.Printf("[ERROR] failed to get new dynamic config: %s", err.Error())
 		return err
 	}
+	log.Printf("[DEBUG] successfully created dynamic config")
+	log.Printf("[DEBUG] creating yamlorjsondecorder")
 	decoder := yamlutil.NewYAMLOrJSONDecoder(bytes.NewReader([]byte(b)), 1000)
 	for {
 		var rawObj runtime.RawExtension
@@ -92,6 +104,7 @@ func resourceCreateItem(d *schema.ResourceData, m interface{}) error {
 		}
 	}
 	if err != io.EOF {
+		log.Printf("[ERROR] failed to apply manifest: %s", err.Error())
 		return err
 	}
 	return nil
