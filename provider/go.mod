@@ -12,7 +12,7 @@ replace (
 require (
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/bmatcuk/doublestar v1.3.2 // indirect
-	github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926183831-cf9098573250
+	github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200927212552-7c6c7f3ce121
 	github.com/gogo/protobuf v1.3.1 // indirect
 	github.com/google/go-cmp v0.5.2 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
@@ -21,9 +21,9 @@ require (
 	github.com/hashicorp/go-multierror v1.1.0 // indirect
 	github.com/hashicorp/go-retryablehttp v0.6.7 // indirect
 	github.com/hashicorp/go-uuid v1.0.2 // indirect
-	github.com/hashicorp/go-version v1.2.1 // indirect
 	github.com/hashicorp/hil v0.0.0-20200423225030-a18a1cd20038 // indirect
 	github.com/hashicorp/terraform v0.13.3
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.0.3
 	github.com/hashicorp/terraform-svchost v0.0.0-20200729002733-f050f53b9734 // indirect
 	github.com/imdario/mergo v0.3.11 // indirect
 	github.com/json-iterator/go v1.1.10 // indirect

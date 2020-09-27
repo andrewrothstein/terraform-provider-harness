@@ -46,7 +46,7 @@ func resourceDelegateItem() *schema.Resource {
 
 func resourceCreateItem(d *schema.ResourceData, m interface{}) error {
 	log.Printf("[DEBUG] starting resourceCreateItem")
-	meta := m.(Meta)
+	meta := m.(*Meta)
 	log.Printf("[DEBUG] getting delegate name")
 	delegateName := d.Get("delegate_name").(string)
 	log.Printf("[DEBUG] delegate_name: %s", delegateName)
