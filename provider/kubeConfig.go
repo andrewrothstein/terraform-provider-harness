@@ -20,8 +20,8 @@ func newKubeClient(configData *schema.ResourceData) (*kubernetes.Clientset, *res
 	clusterCaCertificate := configData.Get(fmt.Sprintf("%scluster_ca_certificate", k8sPrefix)).(string)
 	log.Printf(" [DEBUG] Cluster Certificate: %s", clusterCaCertificate)
 	overrides.ClusterInfo.CertificateAuthorityData = bytes.NewBufferString(clusterCaCertificate).Bytes()
-	hostString := configData.Get(fmt.Sprintf("[DEBUG] %scluster_ca_certificate", k8sPrefix)).(string)
-	log.Printf("[DEBUG]  host: %s", hostString)
+	hostString := configData.Get(fmt.Sprintf("%shost", k8sPrefix)).(string)
+	log.Printf("[DEBUG] host: %s", hostString)
 	// hard coding TLS true cause our server only has a true
 	host, _, err := rest.DefaultServerURL(hostString, "", apimachineryschema.GroupVersion{}, true)
 	if err != nil {
