@@ -56,22 +56,22 @@ func Provider() terraform.ResourceProvider {
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 	m := &Meta{data: d}
 	clientURL := d.Get("client_url").(string)
-	log.Printf("Client URL: %s", clientURL)
+	log.Printf("[DEBUG] Client URL: %s", clientURL)
 	accountID := d.Get("account_id").(string)
-	log.Printf("Account ID: %s", accountID)
+	log.Printf("[DEBUG] Account ID: %s", accountID)
 	token := d.Get("token").(string)
-	log.Printf("token: %s", token)
+	log.Printf("[DEBUG] token: %s", token)
 	kClient, restConfig, err := newKubeClient(d)
 	if err != nil {
-		log.Printf("provider configure error %v", err)
+		log.Printf("[DEBUG] provider configure error %v", err)
 		return nil, err
 	}
 	m.kubeClient = kClient
 	m.restConfig = restConfig
 	m.harnessClient = client.NewClient(clientURL, token, accountID)
 	if m.harnessClient == nil {
-		return m, fmt.Errorf("harness client nil")
+		return m, fmt.Errorf("[DEBUG] harness client nil")
 	}
-	log.Println("[INFO] Harness Provider Configured successfully!")
+	log.Println("[DEBUG]  Harness Provider Configured successfully!")
 	return m, nil
 }

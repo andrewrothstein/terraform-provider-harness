@@ -18,34 +18,34 @@ func newKubeClient(configData *schema.ResourceData) (*kubernetes.Clientset, *res
 	overrides := &clientcmd.ConfigOverrides{}
 	loader := &clientcmd.ClientConfigLoadingRules{}
 	clusterCaCertificate := configData.Get(fmt.Sprintf("%scluster_ca_certificate", k8sPrefix)).(string)
-	log.Printf("Cluster Certificate: %s", clusterCaCertificate)
+	log.Printf(" [DEBUG] Cluster Certificate: %s", clusterCaCertificate)
 	overrides.ClusterInfo.CertificateAuthorityData = bytes.NewBufferString(clusterCaCertificate).Bytes()
-	hostString := configData.Get(fmt.Sprintf("%scluster_ca_certificate", k8sPrefix)).(string)
-	log.Printf("host: %s", hostString)
+	hostString := configData.Get(fmt.Sprintf("[DEBUG] %scluster_ca_certificate", k8sPrefix)).(string)
+	log.Printf("[DEBUG]  host: %s", hostString)
 	// hard coding TLS true cause our server only has a true
 	host, _, err := rest.DefaultServerURL(hostString, "", apimachineryschema.GroupVersion{}, true)
 	if err != nil {
 		return nil, nil, err
 	}
 	overrides.ClusterInfo.Server = host.String()
-	overrides.AuthInfo.Token = configData.Get(fmt.Sprintf("%stoken", k8sPrefix)).(string)
-	log.Println(overrides)
+	overrides.AuthInfo.Token = configData.Get(fmt.Sprintf("[DEBUG]  %stoken", k8sPrefix)).(string)
+	log.Println("[DEBUG] ", overrides)
 	client := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(loader, overrides)
 	if client == nil {
 		return nil, nil, fmt.Errorf("failed to initialize kubernetes config")
 	}
-	log.Printf("[INFO] Successfully initialized kubernetes config")
+	log.Printf("[DEBUG]  Successfully initialized kubernetes config")
 	c, err := client.ClientConfig()
 	if err != nil {
-		log.Printf("error: %s", err.Error())
+		log.Printf("[DEBUG] error: %s", err.Error())
 		return nil, nil, err
 	}
 	k, err := kubernetes.NewForConfig(c)
 	if err != nil {
-		log.Printf("error: %s", err.Error())
+		log.Printf("[DEBUG]  error: %s", err.Error())
 		return nil, nil, err
 	}
-	log.Printf("[INFO] Successfully created connections")
+	log.Printf("[DEBUG]  Successfully created connections")
 	return k, c, nil
 
 }
