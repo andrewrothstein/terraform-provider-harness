@@ -10,7 +10,7 @@ replace (
 )
 
 require (
-	github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200927203357-d47e0055fb3a // indirect
+	github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200927210349-bc67ba1d0cb5 // indirect
 	github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200927203357-d47e0055fb3a
 	github.com/fatih/color v1.9.0 // indirect
 	github.com/hashicorp/go-hclog v0.14.1 // indirect
