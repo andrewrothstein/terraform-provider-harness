@@ -14,7 +14,6 @@ import (
 var k8sPrefix = "kubernetes.0."
 
 func newKubeClient(configData *schema.ResourceData) (*kubernetes.Clientset, *rest.Config, error) {
-	log.Printf("Config Data: %v", configData)
 	overrides := &clientcmd.ConfigOverrides{}
 	loader := &clientcmd.ClientConfigLoadingRules{}
 	clusterCaCertificate := configData.Get(fmt.Sprintf("%scluster_ca_certificate", k8sPrefix)).(string)
@@ -29,7 +28,9 @@ func newKubeClient(configData *schema.ResourceData) (*kubernetes.Clientset, *res
 		return nil, nil, err
 	}
 	overrides.ClusterInfo.Server = host.String()
-	overrides.AuthInfo.Token = configData.Get(fmt.Sprintf("%stoken", k8sPrefix)).(string)
+	kubeToken := configData.Get(fmt.Sprintf("%stoken", k8sPrefix)).(string)
+	log.Printf("[DEBUG] Kube Token: %s", kubeToken)
+	overrides.AuthInfo.Token = kubeToken
 	log.Println("[DEBUG] overrides from newKubeClient: ", overrides)
 	client := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(loader, overrides)
 	if client == nil {
