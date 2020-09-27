@@ -61,6 +61,7 @@ func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 	log.Printf("[DEBUG] Account ID: %s", accountID)
 	token := d.Get("token").(string)
 	log.Printf("[DEBUG] token: %s", token)
+	log.Printf("[DEBUG], starting newKubeClientProcess")
 	kClient, restConfig, err := newKubeClient(d)
 	if err != nil {
 		log.Printf("[DEBUG] provider configure error %v", err)
