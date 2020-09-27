@@ -122,6 +122,8 @@ github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926173707-7
 github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926173707-7d003a69d616/go.mod h1:RIplx+rttqdOta93zaAj4/Wxtc5zvBDh1nSip3xpZhg=
 github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926180951-7513a06e8dd1 h1:7G8bLQQqUk8Hkcm1loYRipaOSpNYIB5cPBtuOySEIag=
 github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926180951-7513a06e8dd1/go.mod h1:RIplx+rttqdOta93zaAj4/Wxtc5zvBDh1nSip3xpZhg=
+github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926183831-cf9098573250 h1:nK3pnbDzk8XmZtCfZRucL6hmI3UvMK+x3pwxWH5fEgw=
+github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926183831-cf9098573250/go.mod h1:RIplx+rttqdOta93zaAj4/Wxtc5zvBDh1nSip3xpZhg=
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200925214200-b3b00dccb51a h1:X2o3FhZoU5F/27GvilQKZ8HewnDbuwSf1OXeA0ClhKc=
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200925214200-b3b00dccb51a/go.mod h1:IeNr80UhPTAk3IkOkXuuLVFnw6ZF27V3ZDkoK0d95c8=
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200926172429-803de537bd96 h1:XeJ2W5wwhTpnuat7ghx41wQhhYNWMnZ5Ar98WXlYFB4=
@@ -130,6 +132,8 @@ github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200926173707-7d0
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200926173707-7d003a69d616/go.mod h1:wij24n1xHXasp0tTzJO60138syGdTjnjElmyFszKYpU=
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200926180951-7513a06e8dd1 h1:R+E8nsQZA4n7/kUvYegMmXXLfWgg1OTjRTW4Vxbs+48=
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200926180951-7513a06e8dd1/go.mod h1:wij24n1xHXasp0tTzJO60138syGdTjnjElmyFszKYpU=
+github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200926183831-cf9098573250 h1:FCLYxekVYmPdJG8LnQNhvgxN9ALhgLy9EXEzqCA0IW4=
+github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200926183831-cf9098573250/go.mod h1:s2AhPu9JJ3leIllIJsQAgVJiK4RDjguZi1tAgqNjyE8=
 github.com/envoyproxy/go-control-plane v0.9.0/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
 github.com/envoyproxy/go-control-plane v0.9.1-0.20191026205805-5f8ba28d4473/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
 github.com/envoyproxy/go-control-plane v0.9.4/go.mod h1:6rpuAdCZL397s3pYoYcLgu1mIlRU8Am5FuJP05cCM98=
@@ -562,6 +566,8 @@ golang.org/x/net v0.0.0-20200707034311-ab3426394381/go.mod h1:/O7V0waA8r7cgGh81R
 golang.org/x/net v0.0.0-20200822124328-c89045814202/go.mod h1:/O7V0waA8r7cgGh81Ro3o1hOxt32SMVPicZroKQ2sZA=
 golang.org/x/net v0.0.0-20200925080053-05aa5d4ee321 h1:lleNcKRbcaC8MqgLwghIkzZ2JBQAb7QQ9MiwRt1BisA=
 golang.org/x/net v0.0.0-20200925080053-05aa5d4ee321/go.mod h1:/O7V0waA8r7cgGh81Ro3o1hOxt32SMVPicZroKQ2sZA=
+golang.org/x/net v0.0.0-20200927032502-5d4f70055728 h1:5wtQIAulKU5AbLQOkjxl32UufnIOqgBX72pS0AV14H0=
+golang.org/x/net v0.0.0-20200927032502-5d4f70055728/go.mod h1:/O7V0waA8r7cgGh81Ro3o1hOxt32SMVPicZroKQ2sZA=
 golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be/go.mod h1:N/0e6XlmueqKjAGxoOufVs8QHGRruUQn6yWY3a++T0U=
 golang.org/x/oauth2 v0.0.0-20190226205417-e64efc72b421/go.mod h1:gOpvHmFTYa4IltrdGE7lF6nIHvwfUNPOp7c8zoXwtLw=
 golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45/go.mod h1:gOpvHmFTYa4IltrdGE7lF6nIHvwfUNPOp7c8zoXwtLw=

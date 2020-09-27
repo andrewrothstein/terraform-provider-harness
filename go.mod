@@ -12,8 +12,8 @@ replace (
 require (
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/bmatcuk/doublestar v1.3.2 // indirect
-	github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926180951-7513a06e8dd1 // indirect
-	github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200926180951-7513a06e8dd1
+	github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200926183831-cf9098573250 // indirect
+	github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200926183831-cf9098573250
 	github.com/fatih/color v1.9.0 // indirect
 	github.com/google/go-cmp v0.5.2 // indirect
 	github.com/google/uuid v1.1.2 // indirect
@@ -34,6 +34,7 @@ require (
 	github.com/oklog/run v1.1.0 // indirect
 	github.com/spf13/afero v1.4.0 // indirect
 	github.com/zclconf/go-cty v1.6.1 // indirect
+	golang.org/x/net v0.0.0-20200927032502-5d4f70055728 // indirect
 	golang.org/x/sys v0.0.0-20200926100807-9d91bd62050c // indirect
 	google.golang.org/genproto v0.0.0-20200925023002-c2d885f95484 // indirect
 	google.golang.org/grpc v1.32.0 // indirect
