@@ -12,7 +12,7 @@ replace (
 require (
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/bmatcuk/doublestar v1.3.2 // indirect
-	github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200927212552-7c6c7f3ce121
+	github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200927230104-e2bf69c9db36
 	github.com/gogo/protobuf v1.3.1 // indirect
 	github.com/google/go-cmp v0.5.2 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect

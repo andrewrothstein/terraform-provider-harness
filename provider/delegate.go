@@ -26,7 +26,7 @@ func resourceDelegateItem() *schema.Resource {
 				ForceNew:     true,
 				ValidateFunc: validateName,
 			},
-			"delegate_install": {
+			"install_type": {
 				Type:         schema.TypeString,
 				Required:     true,
 				Description:  "A description of an item",
