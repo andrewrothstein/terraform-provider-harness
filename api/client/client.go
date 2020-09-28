@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -29,7 +30,9 @@ func NewClient(clientURL, token, accountID string) *HarnessClient {
 	}
 }
 
-func untar(dst string, r io.Reader) error {
+// Untar takes a destination path and a reader; a tar reader loops over the tarfile
+// creating the file structure at 'dst' along the way, and writing any files
+func Untar(dst string, r io.Reader) error {
 
 	gzr, err := gzip.NewReader(r)
 	if err != nil {
@@ -101,30 +104,30 @@ type HarnessDelegateResponse struct {
 func (hd HarnessDelegateResponse) GetURLByInstallType(installType string) (string, error) {
 	switch inst := installType; inst {
 	case "KUBERNETES_YAML":
+		log.Printf("Kubernetes URL: %s", hd.Resource["kuberentesUrl"])
 		return hd.Resource["kubernetesUrl"], nil
 	default:
 	}
 	return "", fmt.Errorf("no install type found for %s", installType)
 }
 
+//https://app.harness.io/gateway/api/setup/delegates/downloadUrl
 func (c *HarnessClient) GetNewDelegate(delegateName, installType string) ([]byte, error) {
 	if installType == "" {
 		return nil, fmt.Errorf("empty string not allowed for install type")
 	}
-	newDelegateInitURL := fmt.Sprintf("%s/gateway/api/setup/delegates/downloadUrl", c.clientURL)
-	req, err := http.NewRequest(http.MethodGet, newDelegateInitURL, nil)
+	url := fmt.Sprintf("%s/gateway/api/setup/delegates/downloadUrl?accountId=%s", c.clientURL, c.accountID)
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+
 	if err != nil {
-		return nil, err
+		fmt.Println(err)
 	}
 	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", c.token))
-	q := req.URL.Query()
-	q.Add("accountId", c.accountID)
-	req.URL.RawQuery = q.Encode()
 	resp, err := c.client.Do(req)
-	if err != nil {
-		return nil, err
-	}
 	defer resp.Body.Close()
+
+	log.Printf("Harness Response Code: %s", resp.Status)
+
 	hc := HarnessDelegateResponse{}
 	err = json.NewDecoder(resp.Body).Decode(&hc)
 	if err != nil {
@@ -134,19 +137,34 @@ func (c *HarnessClient) GetNewDelegate(delegateName, installType string) ([]byte
 	if err != nil {
 		return nil, err
 	}
+	downloadURL = fmt.Sprintf("%s&delegateName=%s", downloadURL, delegateName)
+	log.Printf("DownloadURL: %s", downloadURL)
 	downloadRequest, err := http.NewRequest(http.MethodGet, downloadURL, nil)
 	if err != nil {
 		return nil, err
 	}
-	downloadQuery := downloadRequest.URL.Query()
-	downloadQuery.Add("delegate_name", delegateName)
-	downloadRequest.URL.RawQuery = downloadQuery.Encode()
 	downloadResp, err := c.client.Do(downloadRequest)
 	if err != nil {
 		return nil, err
 	}
 	defer downloadResp.Body.Close()
-	err = untar(".", downloadResp.Body)
+	out, err := os.Create("./harness-delegate-kubernetes.tar.gz")
+	if err != nil {
+		return nil, err
+	}
+	defer out.Close()
+	// Write the body to file
+	_, err = io.Copy(out, downloadResp.Body)
+	if err != nil {
+		return nil, err
+	}
+	r, err := os.Open("./harness-delegate-kubernetes.tar.gz")
+	if err != nil {
+		return nil, err
+	}
+	defer os.Remove("./harness-delegate-kubernetes.tar.gz")
+	err = Untar(".", r)
+	defer os.RemoveAll("./harness-delegate-kubernetes")
 	if err != nil {
 		return nil, err
 	}
@@ -154,6 +172,5 @@ func (c *HarnessClient) GetNewDelegate(delegateName, installType string) ([]byte
 	if err != nil {
 		return nil, err
 	}
-	err = os.RemoveAll("./harness-delegate/kubernetes")
 	return b, err
 }
