@@ -10,8 +10,8 @@ replace (
 )
 
 require (
-	github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200928182058-a5b7ede93ef4 // indirect
-	github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200928182058-a5b7ede93ef4
+	github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200928184036-e8732a7446e9 // indirect
+	github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200928184036-e8732a7446e9
 	github.com/fatih/color v1.9.0 // indirect
 	github.com/hashicorp/go-hclog v0.14.1 // indirect
 	github.com/hashicorp/terraform v0.13.3
@@ -19,6 +19,7 @@ require (
 	github.com/mattn/go-colorable v0.1.7 // indirect
 	github.com/mitchellh/go-testing-interface v1.14.1 // indirect
 	github.com/oklog/run v1.1.0 // indirect
+	golang.org/x/sys v0.0.0-20200928205150-006507a75852 // indirect
 	google.golang.org/genproto v0.0.0-20200925023002-c2d885f95484 // indirect
 	google.golang.org/grpc v1.32.0 // indirect
 )
