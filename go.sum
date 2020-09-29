@@ -119,6 +119,8 @@ github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200928184036-e
 github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200928184036-e8732a7446e9/go.mod h1:RIplx+rttqdOta93zaAj4/Wxtc5zvBDh1nSip3xpZhg=
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200929010509-8c84a1b2a70f h1:lPGzHt5Y7+Q5BygfZmU4WuEV5eNqIBZJk+kOUEbzaN8=
 github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200929010509-8c84a1b2a70f/go.mod h1:a3Jhm+5qPiPbdQbjsYZORv2rN9dTaEnmQV/wZqWIXZU=
+github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200929011740-f259bac8e7fe h1:+G39NrojoKP29yr4aVjKtxAJKtHVDKEQLPFwKLk9F9I=
+github.com/eahrend/terraform-harness-provider/provider v0.0.0-20200929011740-f259bac8e7fe/go.mod h1:a3Jhm+5qPiPbdQbjsYZORv2rN9dTaEnmQV/wZqWIXZU=
 github.com/envoyproxy/go-control-plane v0.9.0/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
 github.com/envoyproxy/go-control-plane v0.9.1-0.20191026205805-5f8ba28d4473/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
 github.com/envoyproxy/go-control-plane v0.9.4/go.mod h1:6rpuAdCZL397s3pYoYcLgu1mIlRU8Am5FuJP05cCM98=
