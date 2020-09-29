@@ -3,6 +3,7 @@ package provider
 import (
 	"bytes"
 	"fmt"
+	"github.com/google/uuid"
 	"github.com/hashicorp/terraform/helper/schema"
 	"io"
 	k8sMeta "k8s.io/apimachinery/pkg/api/meta"
@@ -107,6 +108,8 @@ func resourceCreateItem(d *schema.ResourceData, m interface{}) error {
 		log.Printf("[ERROR] failed to apply manifest: %s", err.Error())
 		return err
 	}
+	resourceID := uuid.New()
+	d.SetId(resourceID.String())
 	return nil
 }
 
@@ -135,6 +138,7 @@ func resourceDeleteItem(d *schema.ResourceData, m interface{}) error {
 	if err != nil {
 		return err
 	}
+	d.SetId("")
 	return nil
 }
 
