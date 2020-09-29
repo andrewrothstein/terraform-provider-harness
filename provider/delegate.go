@@ -45,12 +45,6 @@ func resourceDelegateItem() *schema.Resource {
 }
 
 func resourceCreateItem(d *schema.ResourceData, m interface{}) error {
-	log.Printf("[DEBUG] doing resource check to see if it exists")
-	_, err := resourceExistsItem(d, m)
-	if err != nil {
-		log.Printf("[ERROR] resources exists check: %s", err.Error())
-		return err
-	}
 	log.Printf("[DEBUG] starting resourceCreateItem")
 	meta := m.(*Meta)
 	log.Printf("[DEBUG] getting delegate name")
@@ -123,6 +117,10 @@ func resourceReadItem(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceUpdateItem(d *schema.ResourceData, m interface{}) error {
+	err := resourceDeleteItem(d, m)
+	if err != nil {
+		return err
+	}
 	return resourceCreateItem(d, m)
 }
 
