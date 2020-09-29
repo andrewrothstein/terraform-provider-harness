@@ -133,6 +133,8 @@ github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200928170831-2
 github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200928170831-2d57eb52f322/go.mod h1:RIplx+rttqdOta93zaAj4/Wxtc5zvBDh1nSip3xpZhg=
 github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200928182058-a5b7ede93ef4 h1:Q5tsq9JY9LCf8/JxlbPjAWUo678QCC8UIZrJFAJt5Kg=
 github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200928182058-a5b7ede93ef4/go.mod h1:RIplx+rttqdOta93zaAj4/Wxtc5zvBDh1nSip3xpZhg=
+github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200928184036-e8732a7446e9 h1:LlgbXoU6izkwjDCV2uMjNiu9hzCW67nNyGGFM8Xqdmg=
+github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200928184036-e8732a7446e9/go.mod h1:RIplx+rttqdOta93zaAj4/Wxtc5zvBDh1nSip3xpZhg=
 github.com/emirpasic/gods v1.12.0/go.mod h1:YfzfFFoVP/catgzJb4IKIqXjX78Ha8FMSDh3ymbK86o=
 github.com/envoyproxy/go-control-plane v0.9.0/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
 github.com/envoyproxy/go-control-plane v0.9.1-0.20191026205805-5f8ba28d4473/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
@@ -639,6 +641,8 @@ golang.org/x/sys v0.0.0-20200803210538-64077c9b5642 h1:B6caxRw+hozq68X2MY7jEpZh/
 golang.org/x/sys v0.0.0-20200803210538-64077c9b5642/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20200926100807-9d91bd62050c h1:38q6VNPWR010vN82/SB121GujZNIfAUb4YttE2rhGuc=
 golang.org/x/sys v0.0.0-20200926100807-9d91bd62050c/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20200928205150-006507a75852 h1:sXxgOAXy8JwHhZnPuItAlUtwIlxrlEqi28mKhUR+zZY=
+golang.org/x/sys v0.0.0-20200928205150-006507a75852/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/text v0.3.1-0.20180807135948-17ff2d5776d2/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=

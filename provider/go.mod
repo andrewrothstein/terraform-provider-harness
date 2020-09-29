@@ -12,7 +12,7 @@ replace (
 require (
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/bmatcuk/doublestar v1.3.2 // indirect
-	github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200928182058-a5b7ede93ef4
+	github.com/eahrend/terraform-harness-provider/api/client v0.0.0-20200928184036-e8732a7446e9
 	github.com/gogo/protobuf v1.3.1 // indirect
 	github.com/google/go-cmp v0.5.2 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
@@ -38,7 +38,7 @@ require (
 	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a // indirect
 	golang.org/x/net v0.0.0-20200927032502-5d4f70055728 // indirect
 	golang.org/x/oauth2 v0.0.0-20200902213428-5d25da1a8d43 // indirect
-	golang.org/x/sys v0.0.0-20200926100807-9d91bd62050c // indirect
+	golang.org/x/sys v0.0.0-20200928205150-006507a75852 // indirect
 	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	k8s.io/api v0.19.2 // indirect

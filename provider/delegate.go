@@ -45,6 +45,12 @@ func resourceDelegateItem() *schema.Resource {
 }
 
 func resourceCreateItem(d *schema.ResourceData, m interface{}) error {
+	log.Printf("[DEBUG] doing resource check to see if it exists")
+	_, err := resourceExistsItem(d, m)
+	if err != nil {
+		log.Printf("[ERROR] resources exists check: %s", err.Error())
+		return err
+	}
 	log.Printf("[DEBUG] starting resourceCreateItem")
 	meta := m.(*Meta)
 	log.Printf("[DEBUG] getting delegate name")
@@ -110,7 +116,8 @@ func resourceCreateItem(d *schema.ResourceData, m interface{}) error {
 	return nil
 }
 
-// uhhh, not sure.
+// I'll update this with a proper data source later, currently for my needs I don't _really_ need
+// a resource read
 func resourceReadItem(d *schema.ResourceData, m interface{}) error {
 	return nil
 }
@@ -120,37 +127,38 @@ func resourceUpdateItem(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceDeleteItem(d *schema.ResourceData, m interface{}) error {
-	meta := m.(Meta)
+	meta := m.(*Meta)
 	kc := meta.kubeClient
-	return kc.CoreV1().Namespaces().Delete("harness-delegate", &metav1.DeleteOptions{})
+	err := kc.CoreV1().Namespaces().Delete("harness-delegate", &metav1.DeleteOptions{})
+	if err != nil {
+		return err
+	}
+	err = kc.RbacV1beta1().ClusterRoleBindings().Delete("harness-delegate-cluster-admin", &metav1.DeleteOptions{})
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func resourceExistsItem(d *schema.ResourceData, m interface{}) (bool, error) {
 	// pretty much we can check for namespace/stateful set here.
-	meta := m.(Meta)
+	meta := m.(*Meta)
 	kc := meta.kubeClient
-	_, err := kc.CoreV1().Namespaces().Get("harness-delegate", metav1.GetOptions{})
+	ns, err := kc.CoreV1().Namespaces().Get("harness-delegate", metav1.GetOptions{})
 	if err != nil {
-		// I know this can create false promises, I'll fix this later
-		return false, nil
+		return false, err
 	}
-	return true, nil
+	if ns.Namespace == "harness-delegate" {
+		return true, nil
+	}
+	return false, nil
 }
 
 func validateName(v interface{}, k string) (ws []string, es []error) {
 	var errs []error
 	var warns []string
 	/*
-		value, ok := v.(string)
-		if !ok {
-			errs = append(errs, fmt.Errorf("expected name to be string"))
-			return warns, errs
-		}
-		whiteSpace := regexp.MustCompile(`\s+`)
-		if whiteSpace.Match([]byte(value)) {
-			errs = append(errs, fmt.Errorf("name cannot contain whitespace. Got %s", value))
-			return warns, errs
-		}
+		I'll actually add validation stuff here down the road, currently working on other parts now
 	*/
 	return warns, errs
 }
